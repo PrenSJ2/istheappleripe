@@ -2,6 +2,8 @@
 
 Website to show people when to buy a specific apple device. 
 
+![preview](https://i.ibb.co/YprhHSy/image.png)
+
 ## Installation
 
 Use the package manager to install dependecies
