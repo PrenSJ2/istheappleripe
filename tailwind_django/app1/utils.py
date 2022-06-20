@@ -29,15 +29,8 @@ def import_data():
 
     # get all the products
 
-    Ios = iosSoup.find_all("div", {"class": "guideContent--2FsbxzKc"})
-
-    Mac = macSoup.find_all("div", {"class": "guideContent--2FsbxzKc"})
-
-    Headphones = musicSoup.find_all("div", {"class": "guideContent--2FsbxzKc"})
-
-    Other = otherSoup.find_all("div", {"class": "guideContent--2FsbxzKc"})
-
-    All = Ios + Mac + Headphones + Other
+    All = iosSoup.find_all("div", {"class": "guideContent--2FsbxzKc"})
+    
 
     # Testing
 
@@ -58,7 +51,10 @@ def import_data():
     #     writer = csv.writer(f)
     #     writer.writerow(csv_headers)
 
+    # First Delete all the items in the database
+    Products.objects.all().delete()
 
+    # Find each product
     for product in All:
         name = product.find_all('a')[0].text
         status = product.find('strong').text
@@ -66,15 +62,25 @@ def import_data():
         img = product.img['src']
         daysSince = product.find_all('span', {"class": "days--339vsFb0"})[0].text
         avg = product.find_all('span', {"class": "days--339vsFb0"})[1].text
-        
-        # Adding to database
+        # set color based off product status
+        if str(status) == str("Buy Now"):
+            color = "#4CAF50"
+        elif status == "Caution":
+            color = "#FFC107"
+        elif status == "Don't Buy":
+            color = "#F44336"
+        else:
+            color = "gray"
 
-        p = Products(name=product.name, status = product.status, status_info = product.status_info, img = product.img, daysSince = product.daysSince, avg = product.avg)
+        # Add to database
+        p = Products(name=name, status = status, status_info = status_info, img = img, daysSince = daysSince, avg = avg, color=color)
         p.save()
 
-        # Creating a CSV with the data
+        # # Creating a CSV with the data
         # with open('istheappleripe2.csv', 'a', encoding='utf-8', newline='') as f:
         #     writer = csv.writer(f)
         #     writer.writerow([name, status, status_info, img, daysSince, avg])
+
+
     return HttpResponse(status=201)
         
