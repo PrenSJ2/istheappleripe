@@ -4,7 +4,7 @@ Website to show people when to buy a specific apple device.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager to install dependecies
 
 ```bash
 npm install
