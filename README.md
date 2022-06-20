@@ -1,4 +1,3 @@
-# istheappleripe
 # Is the apple ripe
 
 Website to show people when to buy a specific apple device. 
