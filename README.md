@@ -14,6 +14,9 @@ pip install django django-tailwind django-browser-reload beautifulsoup4 requests
 
 # Install Node.js dependencies
 npm install
+
+# Install Tailwind theme dependencies
+cd tailwind_django/theme/static_src && npm install && cd ../../..
 ```
 
 ## Usage
