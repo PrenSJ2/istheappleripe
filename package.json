@@ -1,0 +1,28 @@
+{
+  "name": "istheappleripe",
+  "version": "1.0.0",
+  "description": "Website to show people when to buy a specific apple device",
+  "scripts": {
+    "dev": "concurrently \"npm run tailwind:dev\" \"npm run django:dev\"",
+    "build": "npm run install:python && npm run tailwind:build && npm run django:collectstatic",
+    "start": "npm run django:start",
+    "tailwind:dev": "cd tailwind_django/theme/static_src && npm run dev",
+    "tailwind:build": "cd tailwind_django/theme/static_src && npm install && npm run build",
+    "django:dev": "cd tailwind_django && python manage.py runserver",
+    "django:start": "cd tailwind_django && python manage.py runserver 0.0.0.0:8000",
+    "django:collectstatic": "cd tailwind_django && python manage.py collectstatic --noinput",
+    "django:migrate": "cd tailwind_django && python manage.py migrate",
+    "install:python": "pip install -r requirements.txt",
+    "install:deps": "npm install && npm run install:python && cd tailwind_django/theme/static_src && npm install"
+  },
+  "keywords": ["django", "tailwind", "apple", "devices"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "python": ">=3.8"
+  }
+}
