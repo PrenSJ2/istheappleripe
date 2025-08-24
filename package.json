@@ -13,7 +13,7 @@
     "django:collectstatic": "cd tailwind_django && python manage.py collectstatic --noinput",
     "django:migrate": "cd tailwind_django && python manage.py migrate",
     "install:python": "pip install -r requirements.txt",
-    "install:deps": "npm run install:python && cd tailwind_django/theme/static_src && npm install"
+    "install:deps": "npm install && npm run install:python && cd tailwind_django/theme/static_src && npm install"
   },
   "keywords": ["django", "tailwind", "apple", "devices"],
   "author": "",
