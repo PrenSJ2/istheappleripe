@@ -1,0 +1,5 @@
+beautifulsoup4==4.13.4
+Django==5.2.5
+django-browser-reload==1.18.0
+django-tailwind==4.2.0
+requests==2.31.0

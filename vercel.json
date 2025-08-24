@@ -1,0 +1,34 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "tailwind_django/tailwind_django/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "pythonVersion": "3.12"
+      }
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "tailwind_django/tailwind_django/wsgi.py"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "tailwind_django.settings"
+  },
+  "installCommand": "pip install -r requirements.txt && cd tailwind_django/theme/static_src && npm install",
+  "buildCommand": "cd tailwind_django/theme/static_src && npm run build && cd ../../.. && cd tailwind_django && python manage.py collectstatic --noinput"
+}
