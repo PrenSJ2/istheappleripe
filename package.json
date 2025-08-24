@@ -1,0 +1,22 @@
+{
+  "name": "istheappleripe",
+  "version": "1.0.0",
+  "description": "Website to show people when to buy a specific apple device",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run frontend\"",
+    "server": "cd tailwind_django && python3 manage.py runserver",
+    "frontend": "cd tailwind_django && python3 manage.py tailwind start",
+    "dev": "npm start"
+  },
+  "keywords": [
+    "django",
+    "tailwind",
+    "apple",
+    "devices"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
